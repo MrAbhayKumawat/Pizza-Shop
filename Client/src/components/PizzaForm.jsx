@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { placeOrder } from "./actions";
+import { placeOrder } from "./Redux/actions";
 
 const PizzaForm = () => {
   const [type, setType] = useState("");

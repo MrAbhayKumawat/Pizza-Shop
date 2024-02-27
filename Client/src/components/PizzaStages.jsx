@@ -3,7 +3,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { moveToNextStage ,updateTimeTaken} from "./actions";
+import { moveToNextStage ,updateTimeTaken} from "./Redux/actions";
 
 function PizzaStages() {
   const dispatch = useDispatch();
