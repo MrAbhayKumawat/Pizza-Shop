@@ -5,7 +5,7 @@ import {
   MOVE_TO_NEXT_STAGE,
   CANCEL_ORDER,
   UPDATE_STAGE,
-  UPDATE_TIME_TAKEN,
+  UPDATE_TIME_TAKEN, // Import UPDATE_TIME_TAKEN
 } from "./actions";
 
 const initialState = {
@@ -47,18 +47,16 @@ const reducer = (state = initialState, action) => {
           order.id === orderId ? { ...order, stage: newStage } : order
         ),
       };
-    case UPDATE_TIME_TAKEN:
-      const { orderId: id, stage, time } = action.payload; // Renamed orderId to id
-      return {
-        ...state,
-        timeTaken: {
-          ...state.timeTaken,
-          [id]: {
-            ...state.timeTaken[id],
-            [stage]: time,
+      case UPDATE_TIME_TAKEN: {
+        const { orderId, time } = action.payload; // Declaration moved here, wrapped with curly braces
+        return {
+          ...state,
+          timeTaken: {
+            ...state.timeTaken,
+            [orderId]: time,
           },
-        },
-      };
+        };
+      }
     default:
       return state;
   }

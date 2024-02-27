@@ -1,18 +1,32 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "../components/MainDisplay.css";
-import { useDispatch, useSelector } from "react-redux";
-import { cancelOrder, moveToNextStage } from "./actions";
 
 function MainDisplay() {
-  const dispatch = useDispatch();
   const ordersInProgress = useSelector((state) => state.ordersInProgress);
+  const timeTaken = useSelector((state) => state.timeTaken);
 
-  const handleMoveToNextStage = (orderId) => {
-    dispatch(moveToNextStage(orderId));
+  // Function to calculate total time for a specific order
+  const calculateTimeForOrder = (orderId) => {
+    const orderTimeData = timeTaken[orderId];
+    if (orderTimeData) {
+      const { minutes, seconds } = orderTimeData;
+      return `${minutes} minutes ${seconds} seconds`;
+    } else {
+      return "NA";
+    }
   };
 
-  const handleCancelOrder = (orderId) => {
-    dispatch(cancelOrder(orderId));
+  // Function to calculate total time
+  const calculateTotalTime = () => {
+    let totalTime = 0;
+    for (const orderId in timeTaken) {
+      const orderTimeData = timeTaken[orderId];
+      totalTime += orderTimeData.minutes * 60 + orderTimeData.seconds;
+    }
+    const totalMinutes = Math.floor(totalTime / 60);
+    const totalSeconds = totalTime % 60;
+    return `${totalMinutes} minutes ${totalSeconds} seconds`;
   };
 
   return (
@@ -32,11 +46,28 @@ function MainDisplay() {
             <tr key={order.id}>
               <td>{order.id}</td>
               <td>{order.stage}</td>
-              <td>NA</td>
+              <td>{calculateTimeForOrder(order.id)}</td>
               <td>
-                <button onClick={() => handleCancelOrder(order.id)} className="bg-red-500 text-white p-2 rounded-sm px-5">
-                  Cancel
-                </button>
+                {order.stage !== "Order Ready" &&
+                order.stage !== "Order Picked" ? (
+                  <button
+                    onClick={() => handleCancelOrder(order.id)}
+                    className="bg-red-500 text-white p-2 rounded-sm px-5"
+                  >
+                    Cancel
+                  </button>
+                ) : (
+                  <button
+                    className="bg-red-500 text-white p-2 rounded-sm px-5"
+                    onClick={() => {
+                      alert(
+                        "Your order has been picked. Unfortunately, we are unable to cancel it at this time. "
+                      );
+                    }}
+                  >
+                    Order Picked
+                  </button>
+                )}
               </td>
             </tr>
           ))}
@@ -51,7 +82,7 @@ function MainDisplay() {
             <td>
               {
                 ordersInProgress.filter(
-                  (order) => order.stage == "Order Picked"
+                  (order) => order.stage === "Order Picked"
                 ).length
               }
             </td>

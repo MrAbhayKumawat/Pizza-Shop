@@ -2,8 +2,8 @@
 import React from "react";
 import "./App.css";
 import PizzaForm from "./components/PizzaForm";
-import MainDisplay from "./components/MainDisplay";
 import PizzaStages from "./components/PizzaStages";
+import MainDisplay from "./components/MainDisplay";
 
 function App() {
   return (
@@ -11,7 +11,8 @@ function App() {
       <h1 className="text-3xl font-bold text-start">Pizza Shop</h1>
       <PizzaForm />
       <PizzaStages />
-      <MainDisplay />
+      <MainDisplay/>
+     
     </>
   );
 }

@@ -31,33 +31,35 @@ const PizzaForm = () => {
         Place Pizza Order
       </h1>
       <form className="mt-5 lg:flex  xl:flex  gap-5 ">
-        <input
-          type="text"
+        <select
           value={type}
           onChange={(e) => setType(e.target.value)}
           className="block w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
-          placeholder="Enter type here..."
-        />
-        <input
-          type="text"
+        >
+          <option value="">Select Type</option>
+          <option value="Veg">Veg</option>
+          <option value="Non-Veg">Non-Veg</option>
+        </select>
+        <select
           value={size}
           onChange={(e) => setSize(e.target.value)}
           className="block w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
-          placeholder="Enter Size  here..."
-        />
-        <input
-          type="text"
+        >
+          <option value="">Select Size</option>
+          <option value="Large">Large</option>
+          <option value="Medium">Medium</option>
+          <option value="Small">Small</option>
+        </select>
+        <select
           value={base}
           onChange={(e) => setBase(e.target.value)}
           className="block w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
-          placeholder="Enter Base here..."
-        />
+        >
+          <option value="">Select Base</option>
+          <option value="Thin">Thin</option>
+          <option value="Thick">Thick</option>
+        </select>
       </form>
-      <div className="flex justify-around">
-        <p className="text-xs text-gray-400 mt-2">Ex :- Veg, Non-Veg</p>
-        <p className="text-xs text-gray-400 mt-2">Ex :- Large, Medium, Small</p>
-        <p className="text-xs text-gray-400 mt-2">Ex :- Thin, Thick</p>
-      </div>
       {error && <p className="text-red-500 mt-2">{error}</p>} {/* Display error message */}
       <button
         type="submit"

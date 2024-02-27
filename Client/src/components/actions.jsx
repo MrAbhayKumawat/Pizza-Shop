@@ -4,7 +4,7 @@ export const PLACE_ORDER = "PLACE_ORDER";
 export const MOVE_TO_NEXT_STAGE = "MOVE_TO_NEXT_STAGE";
 export const CANCEL_ORDER = "CANCEL_ORDER";
 export const UPDATE_STAGE = "UPDATE_STAGE";
-export const UPDATE_TIME_TAKEN = "UPDATE_TIME_TAKEN"; // New action type
+export const UPDATE_TIME_TAKEN = "UPDATE_TIME_TAKEN"; // Define the action type
 
 export const placeOrder = (order) => ({
   type: PLACE_ORDER,
@@ -26,10 +26,7 @@ export const updateStage = (orderId, newStage) => ({
   payload: { orderId, newStage },
 });
 
-export const updateTimeTaken = (orderId, stage, time) => ({ // New action creator
+export const updateTimeTaken = (orderId, time) => ({  // Define the updateTimeTaken action creator
   type: UPDATE_TIME_TAKEN,
-  payload: { orderId, stage, time },
+  payload: { orderId, time },
 });
-
-
-
