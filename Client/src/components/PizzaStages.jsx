@@ -66,10 +66,10 @@ function PizzaStages() {
 
   return (
     <>
-      <h1 className="text-start">Pizza Stages Section</h1>
+      <h1 className="text-start font-semibold mt-3">Pizza Stages Section</h1>
 
-      <div className="flex justify-center gap-2 mt-5">
-        <div className="w-96 h-96 border-slate-950 border-2 overflow-y-scroll">
+      <div className=" flex justify-center gap-2 mt-5 flex-wrap">
+        <div className="w-64 h-96 border-slate-950 border-2 overflow-y-scroll">
           <p className="text-center p-2 font-semibold">Order Placed</p>
           {data.ordersInProgress && data.ordersInProgress.length > 0 ? (
             data.ordersInProgress.map((order) =>
@@ -98,7 +98,7 @@ function PizzaStages() {
             <p>Order Not Placed</p>
           )}
         </div>
-        <div className="w-96 h-96 border-slate-950 border-2 overflow-y-scroll">
+        <div className="w-64 h-96 border-slate-950 border-2 overflow-y-scroll">
           <p className="text-center p-2 font-semibold">Order In Making</p>
           {/* Replace this with Redux state */}
           {data.ordersInProgress && data.ordersInProgress.length > 0 ? (
@@ -129,7 +129,7 @@ function PizzaStages() {
           )}
           {/* {currentStage >= 2 && <p>Second stage content</p>} */}
         </div>
-        <div className="w-96 h-96 border-slate-950 border-2 overflow-y-scroll">
+        <div className="w-64 h-96 border-slate-950 border-2 overflow-y-scroll">
           <p className="text-center p-2 font-semibold">Order Ready</p>
           {/* Replace this with Redux state */}
           {data.ordersInProgress && data.ordersInProgress.length > 0 ? (
@@ -142,7 +142,7 @@ function PizzaStages() {
      }`}                  key={order.id}
                 >
                   <p>{order.id}</p>
-                  <p>3 Min 10 Sec</p>
+                  <p>{calculateTimeSpent(order)} Min</p>
                   <button
                     onClick={() => handleNextStage(order.id)}
                     type="button"
@@ -160,7 +160,7 @@ function PizzaStages() {
           )}
           {/* {currentStage >= 3 && <p>Third stage content</p>} */}
         </div>
-        <div className="w-96 h-96 border-slate-950 border-2 overflow-y-scroll">
+        <div className="w-64 h-96 border-slate-950 border-2 overflow-y-scroll">
           <p className="text-center p-2 font-semibold">Order Picked</p>
           {/* Replace this with Redux state */}
           {data.ordersInProgress && data.ordersInProgress.length > 0 ? (

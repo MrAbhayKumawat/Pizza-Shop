@@ -30,7 +30,7 @@ const PizzaForm = () => {
       <h1 className="text-2xl font-semibold mt-3 text-start">
         Place Pizza Order
       </h1>
-      <form className="mt-5 flex gap-5">
+      <form className="mt-5 lg:flex  xl:flex  gap-5 ">
         <input
           type="text"
           value={type}
