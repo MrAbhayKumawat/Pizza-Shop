@@ -158,7 +158,7 @@ const calculateMakingTime = (size) => {
       }
     })
   ) : (
-    <p>Order Not Placed</p>
+    <p></p>
   )}
 </div>
 
@@ -196,7 +196,7 @@ const calculateMakingTime = (size) => {
       }
     })
   ) : (
-    <p>Order Not Placed</p>
+    <p></p>
   )}
 </div>
 
@@ -229,7 +229,7 @@ const calculateMakingTime = (size) => {
       }
     })
   ) : (
-    <p>Order Not Placed</p>
+    <p></p>
   )}
 </div>
       </div>
